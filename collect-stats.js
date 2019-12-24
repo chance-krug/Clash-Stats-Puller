@@ -9,6 +9,7 @@ const config = {
         authorization: 'Bearer ' + auth.clashToken
     }
 };
+console.log('Starting at: ' + new Date());
 let j = schedule.scheduleJob('*/15 * * * *', function(fireDate){
     console.log('Stats Loaded at: ' + new Date());
     //Fetches the current war data and compares it to what is already in the stat json. Adding all new attacks and skipping duplicates
@@ -93,7 +94,6 @@ function findEnemyTHLevel(members, tag){
 function isDuplicate(obj){
     for (let i = 0; i < statObject.stats.length; i++) {
         if(statObject.stats[i].tag === obj.tag && statObject.stats[i].enemyTag === obj.enemyTag){
-            console.log("Duplicate Data");
             return true;
         }
     }
